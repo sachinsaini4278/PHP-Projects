@@ -1,0 +1,193 @@
+************1. LOGIN*************
+Request:
+URL:http://localhost/testing/php/fee/api/login/index.php 
+JSON: {
+		"username" :"rajeev",
+		"password":"rajeev123"
+	  }
+Response:  If correct
+{
+    "status": true
+}
+If incorrect
+{
+    "status": false,
+    "reason": "wrong_credentials"
+}
+
+
+**********2. Student**************
+2.1 Add student
+http://localhost/testing/php/fee/api/student/add-student/add-new-student/index.php
+{
+	"first_name":"Shyam",
+	"last_name":"Kumar",
+	"class_name":"10th",
+	"father_name":"Mahesh",
+	"mother_name":"Garima",
+	"gender":"M",
+	"contact_number":"20290900",
+	"address":"xy2"
+}
+Response1:
+{
+    "status": true
+}
+
+2.1.1 Add Student to courses
+http://localhost/testing/php/fee/api/student/add-student/add-student-to-course/index.php
+Request:
+{
+	"student_id":"20220129101853",
+	"course_name":"Chemistry",
+	"joining_date":"2021-11-19"
+}
+
+
+2.2 show student
+Request: i.) Get student by ID here one student will be sent as Response
+http://localhost/testing/php/fee/api/student/show-student/show-by-id/index.php
+{
+	"student_id":"20220128101529"
+}
+Response:
+[
+    {
+        "student_id": 20220128101529,
+        "first_name": "Kuldeep",
+        "last_name": "Singh",
+        "class_name": "9th",
+        "father_name": "Ramesh",
+        "mother_name": "Garima",
+        "gender": "M",
+        "contact_number": 10290900,
+        "address": "xyz"
+    }
+]
+Request ii): Show student course wise
+http://localhost/testing/php/fee/api/student/show-student/show-by-course/index.php
+{
+    "course_name":"Physics Class 2"
+}
+Response:
+[
+    {
+        "student_id": 20220128101529,
+        "first_name": "Kuldeep",
+        "last_name": "Singh",
+        "class_name": "9th",
+        "father_name": "Ramesh",
+        "mother_name": "Garima",
+        "gender": "M",
+        "contact_number": 10290900,
+        "address": "xyz"
+    },
+]
+Request iii.) Show by Name: 
+http://localhost/testing/php/fee/api/student/show-student/show-by-name/index.php
+{
+	"first_name":"Kuldeep",
+	"last_name":"Singh"
+}
+Response:
+[
+    {
+        "student_id": 20220128101529,
+        "first_name": "Kuldeep",
+        "last_name": "Singh",
+        "class_name": "9th",
+        "father_name": "Ramesh",
+        "mother_name": "Garima",
+        "gender": "M",
+        "contact_number": 10290900,
+        "address": "xyz"
+    },
+]
+
+2.3 delete student
+Request
+http://localhost/testing/php/fee/api/student/delete-student/index.php
+{
+	"student_id":"2147483647"
+}
+Response
+{
+    "status": true
+}
+*****************3. Batches *************
+3.1 Add new course
+//Course Type: Monthly, One-Time
+Request:
+http://localhost/testing/php/fee/api/course/add-new-course/index.php
+{
+	"course_id":"123",
+	"course_name":"Physics class 9",
+	"course_start_date":"2022/01/25",
+	"course_teacher_name":"xyz",
+	"course_fee":"500",
+	"course_type":"monthly",
+    "course_timing":"5PM"
+}
+Response
+{
+    "status": true
+}
+
+3.2 Show All courses
+Request: 
+http://localhost/testing/php/fee/api/course/show-all-course/index.php
+Response:
+[
+    {
+        "course_id": 1,
+        "course_name": "Physics",
+        "course_timing": "00:00:00",
+        "course_start_date": "2022-01-25",
+        "course_teacher_name": "xyz",
+        "course_type": "monthly",
+        "course_fee": 500
+    }
+]
+3.3 Delete a Course
+Request
+http://localhost/testing/php/fee/api/course/delete-course/index.php
+{
+	"course_id":"1"
+}
+Response
+{
+	"status":true
+}
+***********4. Fee **********
+4.1 Add Fee
+Request:
+http://localhost/testing/php/fee/api/fee/add-fee/index.php
+{
+	"student_id":"20220128101529",
+	"course_name":"Physics", 
+	"submit_amount":"500",
+	"submit_date":"2021/12/29"
+
+}
+Response
+{
+	"status":true
+}
+4.2 Show 
+	i.) Show fee student wise 
+	Request:
+	http://localhost/testing/php/fee/api/fee/show-fee/show-by-student-id/index.php
+	{
+		"student_id":"20220128101529"
+	}
+	Response:
+	[
+    	{
+    	    "transaction_number": 20220129113650,
+    	    "student_id": 20220128101529,
+    	    "course_name": "Physics",
+    	    "submit_amount": 500,
+    	    "submit_date": "2022-01-29"
+    	}
+	]
+	

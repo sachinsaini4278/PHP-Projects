@@ -1,0 +1,19 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background-color: aqua;
+    background-image: linear-gradient(purple,rgb(238, 48, 238));
+}
+.container{
+   
+    width: 100vw; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black; 
+}
+ 
